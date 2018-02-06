@@ -69,7 +69,7 @@ passport.use(new LocalStrategy(
 		User.findOne({ email: email }, function (err, user) {
 			// console.log(user);
 			if (err || !user) cb(null, false);
-			else if (password === user.password) {
+			else if (hashPassword(password) === user.password) {
 				cb(null, user);
 			}
 			else cb(null, false);
